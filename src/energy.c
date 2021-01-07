@@ -4,12 +4,12 @@
    Program:    ECalc
    File:       energy.c
    
-   Version:    V1.5
-   Date:       06.02.03
+   Version:    V1.5.1
+   Date:       07.01.21
    Function:   Calculate the energy of the structure
    
-   Copyright:  (c) Dr. Andrew C. R. Martin 1994-2003
-   Author:     Dr. Andrew C. R. Martin
+   Copyright:  (c) UCL, Prof. Andrew C. R. Martin 1994-2021
+   Author:     Prof. Andrew C. R. Martin
    Address:    Biomolecular Structure & Modelling Unit,
                Department of Biochemistry & Molecular Biology,
                University College,
@@ -47,17 +47,18 @@
 
    Revision History:
    =================
-   V0.1  01.09.94 Original
-   V0.2  30.09.94 Added checks on number of parameters
-   V1.0  30.09.94 First release version
-   V1.1  12.10.94 Added code for residue pseudo-energy
-   V1.2  10.11.94 Fixed bugs in reading confs. for second chain
-   V1.3  28.11.94 Fixed bug in display of atom numbers
-   V1.3a 05.01.95 Added #ifdef'd SHOW_HBONDS
-   V1.3b 31.01.95 Initialisation of variables for gcc
-   V1.4  18.05.95 Shake support
-   V1.5  06.02.03 Fixed for new version of GetWord()
-                  Ignore Nter proline-CD/HT1 or HT2 in grid
+   V0.1   01.09.94 Original
+   V0.2   30.09.94 Added checks on number of parameters
+   V1.0   30.09.94 First release version
+   V1.1   12.10.94 Added code for residue pseudo-energy
+   V1.2   10.11.94 Fixed bugs in reading confs. for second chain
+   V1.3   28.11.94 Fixed bug in display of atom numbers
+   V1.3a  05.01.95 Added #ifdef'd SHOW_HBONDS
+   V1.3b  31.01.95 Initialisation of variables for gcc
+   V1.4   18.05.95 Shake support
+   V1.5   06.02.03 Fixed for new version of GetWord()
+                   Ignore Nter proline-CD/HT1 or HT2 in grid
+   V1.5.1 07.01.21 Removed unused variables
 
 *************************************************************************/
 /* Includes
@@ -816,9 +817,10 @@ REAL EHBond(MOLECULE *mol, EPARAMS *eparams)
         ParamR10,
         ParamR12,
         Rul3 = (REAL)0.0,
-        Rul12,
-        Rua3 = (REAL)0.0,
-        Rua12;
+        /* Rul12,                                                       */
+        Rua3 = (REAL)0.0;
+        /* Rua12;                                                       */
+
    ATOM *AtomD,
         *AtomH,
         *AtomA;
@@ -843,7 +845,7 @@ REAL EHBond(MOLECULE *mol, EPARAMS *eparams)
       Rul3  = (REAL)1.0/((CutOffHBSq - CutOnHBSq) * 
                          (CutOffHBSq - CutOnHBSq) * 
                          (CutOffHBSq - CutOnHBSq));
-      Rul12 = (REAL)12.0 * Rul3;
+      /* Rul12 = (REAL)12.0 * Rul3;                                     */
    }
    
    CutOnHBAngSq   = cos(eparams->CutOnHBAng);
@@ -856,7 +858,7 @@ REAL EHBond(MOLECULE *mol, EPARAMS *eparams)
       Rua3  = (REAL)1.0/((CutOffHBAngSq - CutOnHBAngSq) * 
                          (CutOffHBAngSq - CutOnHBAngSq) * 
                          (CutOffHBAngSq - CutOnHBAngSq));
-      Rua12 = (REAL)12.0 * Rua3;
+      /* Rua12 = (REAL)12.0 * Rua3;                                     */
    }
 
    for(i=0; i<mol->NDonors; i++)
@@ -1207,7 +1209,7 @@ REAL ShowEnergy(FILE *out, MOLECULE *mol, EPARAMS *eparams, FLAGS *flags)
            VdwRE     = (REAL)0.0,
            HBondE    = (REAL)0.0,
            ElectE    = (REAL)0.0,
-           NonBondE  = (REAL)0.0,
+           /* NonBondE  = (REAL)0.0,                                    */
            ResidueE  = (REAL)0.0,
            ETot      = (REAL)0.0;
    int     i;
@@ -1271,7 +1273,8 @@ REAL ShowEnergy(FILE *out, MOLECULE *mol, EPARAMS *eparams, FLAGS *flags)
    if(flags->vdwa || flags->vdwr || flags->elect)
    {
       time1 = clock();
-      NonBondE = ENonBond(mol, eparams, &VdwAE, &VdwRE, &ElectE);
+      /* NonBondE =                                                     */
+      ENonBond(mol, eparams, &VdwAE, &VdwRE, &ElectE);
 
       if(flags->Timings)
          TimeNonBonds = (clock()-time1);
@@ -1436,7 +1439,7 @@ ATOM **ReadConfHeader(FILE *conffp, MOLECULE *mol, BOOL SkipReference,
             nres, natoms, 
             NRead, 
             chain, 
-            atomnum, 
+            /* atomnum,                                                 */
             FoundAt,
             *ConsAtNum;
    ATOM     **ConsAtoms;
@@ -1525,7 +1528,7 @@ file");
    for(i=0; i<(*ncons); i++)
    {
       chain   = 0;
-      atomnum = 0;
+      /* atomnum = 0;                                                   */
       FoundAt = ConsAtNum[i];
 
       for(chain = 0; chain < mol->NChains; chain++)

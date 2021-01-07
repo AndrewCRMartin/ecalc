@@ -3,12 +3,12 @@
    Program:    ECalc
    File:       main.c
    
-   Version:    V1.5
-   Date:       06.02.03
+   Version:    V1.5.1
+   Date:       07.01.21
    Function:   Main program for energy calculation
    
-   Copyright:  (c) Dr. Andrew C. R. Martin 1994-2003
-   Author:     Dr. Andrew C. R. Martin
+   Copyright:  (c) UCL, Prof. Andrew C. R. Martin 1994-2021
+   Author:     Prof. Andrew C. R. Martin
    Address:    Biomolecular Structure & Modelling Unit,
                Department of Biochemistry & Molecular Biology,
                University College,
@@ -45,14 +45,15 @@
 
    Revision History:
    =================
-   V0.1  09.09.94 Original
-   V1.0  30.09.94 First release version
-   V1.1  12.10.94 Added code to handle residue part of potential
-                  Fixed bug in low energy caching
-   V1.2  10.11.94 Bug fixes in energy.c
-   V1.3  28.11.94 Bug fixes in energy.c
-   V1.4  18.05.95 Shake support
-   V1.5  06.02.03 Bug fixes in ReadStructure.c
+   V0.1   09.09.94 Original
+   V1.0   30.09.94 First release version
+   V1.1   12.10.94 Added code to handle residue part of potential
+                   Fixed bug in low energy caching
+   V1.2   10.11.94 Bug fixes in energy.c
+   V1.3   28.11.94 Bug fixes in energy.c
+   V1.4   18.05.95 Shake support
+   V1.5   06.02.03 Bug fixes in ReadStructure.c
+   V1.5.1 07.01.21 General tidy up
 
 *************************************************************************/
 #define ECALC_MAIN
@@ -466,10 +467,11 @@ BOOL ParseCmdLine(int argc, char **argv, char *PDBFile, char *ControlFile)
    28.11.94 V1.3
    18.05.95 V1.4
    06.02.03 V1.5
+   07.01.21 V1.5.1
 */
 void UsageExit(void)
 {
-   fprintf(stderr,"\nECalc V1.5 (c) 1994-2003, Dr. Andrew C.R. Martin, \
+   fprintf(stderr,"\nECalc V1.5.1 (c) 1994-2021, Dr. Andrew C.R. Martin, \
 University College London.\n\n");
 
    fprintf(stderr,"Calculates the energy of a protein structure or of a \

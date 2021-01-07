@@ -3,12 +3,12 @@
    Program:    ECalc
    File:       protos.h
    
-   Version:    V1.5
-   Date:       06.02.03
+   Version:    V1.5.1
+   Date:       07.01.21
    Function:   Include prototype files
    
-   Copyright:  (c) Dr. Andrew C. R. Martin 1994-2003
-   Author:     Dr. Andrew C. R. Martin
+   Copyright:  (c) UCL, Prof. Andrew C. R. Martin 1994-2021
+   Author:     Prof. Andrew C. R. Martin
    Address:    Biomolecular Structure & Modelling Unit,
                Department of Biochemistry & Molecular Biology,
                University College,
@@ -45,14 +45,15 @@
 
    Revision History:
    =================
-   V0.1  01.09.94 Original
-   V1.0  30.09.94 First release version
-   V1.1  12.10.94 Changes to energy.c
-   V1.2  10.11.94 Bug fixes in energy.c
-   V1.3  28.11.94 Bug fixes in energy.c
-   V1.4  18.05.95 Added shake.p
-   V1.4  18.05.95 Shake support
-   V1.5  06.02.03 Skipped
+   V0.1   01.09.94 Original
+   V1.0   30.09.94 First release version
+   V1.1   12.10.94 Changes to energy.c
+   V1.2   10.11.94 Bug fixes in energy.c
+   V1.3   28.11.94 Bug fixes in energy.c
+   V1.4   18.05.95 Added shake.p
+   V1.4   18.05.95 Shake support
+   V1.5   06.02.03 Skipped
+   V1.5.1 07.01.21 Skipped
 
 *************************************************************************/
 /* Includes

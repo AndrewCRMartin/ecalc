@@ -3,12 +3,12 @@
    Program:    ECalc
    File:       shake.c
    
-   Version:    V1.5
-   Date:       06.02.03
+   Version:    V1.5.1
+   Date:       07.01.21
    Function:   Perform the SHAKE algorithm to regularize bond lengths
    
-   Copyright:  (c) Dr. Andrew C. R. Martin 1995-2003
-   Author:     Dr. Andrew C. R. Martin
+   Copyright:  (c) UCL, Prof. Andrew C. R. Martin 1995-2021
+   Author:     Prof. Andrew C. R. Martin
    Address:    Biomolecular Structure & Modelling Unit,
                Department of Biochemistry & Molecular Biology,
                University College,
@@ -45,8 +45,9 @@
 
    Revision History:
    =================
-   V1.4  18.05.95 Original
-   V1.5  06.02.03 Skipped
+   V1.4   18.05.95 Original
+   V1.5   06.02.03 Skipped
+   V1.5.1 07.01.21 Removed unused variables
 
 *************************************************************************/
 /* Includes
@@ -325,8 +326,8 @@ int ShakeAll(MOLECULE *mol, REAL ShakeTol)
 void RelaxStructure(MOLECULE *mol, REAL VDWTol, REAL ShakeTol)
 {
    int  NIter,
-        NVDW,
-        NShake;
+        NVDW;
+        /* NShake;                                                      */
    
    
    /* Initialise by copying the coordinates into the reference arrays   */
@@ -335,7 +336,8 @@ void RelaxStructure(MOLECULE *mol, REAL VDWTol, REAL ShakeTol)
    for(NIter=0; NIter<MAXRELAXITER; NIter++)
    {
       NVDW   = VDWRelax(mol, VDWTol);
-      NShake = ShakeAll(mol, ShakeTol);
+      /* NShake = */
+      ShakeAll(mol, ShakeTol);
       
       if(!NVDW)
          break;

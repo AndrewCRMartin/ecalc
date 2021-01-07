@@ -3,12 +3,12 @@
    Program:    ECalc
    File:       params.h
    
-   Version:    V1.5
-   Date:       06.02.03
+   Version:    V1.5.1
+   Date:       07.01.21
    Function:   Variable type definitions and global storage for parameter
                data
-   Copyright:  (c) Dr. Andrew C. R. Martin 1994-2003
-   Author:     Dr. Andrew C. R. Martin
+   Copyright:  (c) UCL, Prof. Andrew C. R. Martin 1994-2021
+   Author:     Prof. Andrew C. R. Martin
    Address:    Biomolecular Structure & Modelling Unit,
                Department of Biochemistry & Molecular Biology,
                University College,
@@ -45,13 +45,14 @@
 
    Revision History:
    =================
-   V0.1  25.08.94 Original
-   V1.0  30.09.94 First release version
-   V1.1  11.10.94 Added statistical residue pseudo-energy
-   V1.2  10.11.94 Bug fixes in energy.c
-   V1.3  28.11.94 Bug fixes in energy.c
-   V1.4  18.05.95 Shake support
-   V1.5  06.02.03 Skipped
+   V0.1   25.08.94 Original
+   V1.0   30.09.94 First release version
+   V1.1   11.10.94 Added statistical residue pseudo-energy
+   V1.2   10.11.94 Bug fixes in energy.c
+   V1.3   28.11.94 Bug fixes in energy.c
+   V1.4   18.05.95 Shake support
+   V1.5   06.02.03 Skipped
+   V1.5.1 07.01.21 Skipped
 
 *************************************************************************/
 #ifndef _PARAMS_H

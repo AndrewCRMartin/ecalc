@@ -3,12 +3,12 @@
    Program:    ECalc
    File:       ecalc.h
    
-   Version:    V1.5
-   Date:       06.02.03
+   Version:    V1.5.1
+   Date:       07.01.21
    Function:   General type definitions, defines, macros and globals
    
-   Copyright:  (c) Dr. Andrew C. R. Martin 1994-2003
-   Author:     Dr. Andrew C. R. Martin
+   Copyright:  (c) UCL, Prof. Andrew C. R. Martin 1994-2021
+   Author:     Prof. Andrew C. R. Martin
    Address:    Biomolecular Structure & Modelling Unit,
                Department of Biochemistry & Molecular Biology,
                University College,
@@ -45,13 +45,14 @@
 
    Revision History:
    =================
-   V0.1  25.08.94 Original
-   V1.0  30.09.94 First release version
-   V1.1  12.10.94 Changes to energy.c
-   V1.2  10.11.94 Bug fixes in energy.c
-   V1.3  28.11.94 Bug fixes in energy.c. Added global gConfNum
-   V1.4  18.05.95 Shake & Relax support
-   V1.5  06.02.03 Skipped
+   V0.1   25.08.94 Original
+   V1.0   30.09.94 First release version
+   V1.1   12.10.94 Changes to energy.c
+   V1.2   10.11.94 Bug fixes in energy.c
+   V1.3   28.11.94 Bug fixes in energy.c. Added global gConfNum
+   V1.4   18.05.95 Shake & Relax support
+   V1.5   06.02.03 Skipped
+   V1.5.1 07.01.21 Skipped
 
 *************************************************************************/
 #ifndef _ECALC_H
@@ -82,6 +83,7 @@
 #define TOPFILE   "restop.dat"
 
 #define MAXBUFF 160
+#define ERRBUFF 240
 
 #define MAXRELAXITER 1            /* Max iterations for RelaxStructure()*/
 #define MAXVDWITER   1            /* Max iterations for VDW Relaxation  */
@@ -184,7 +186,7 @@ typedef struct
 /* Globals
 */
 #ifdef ECALC_MAIN       /*--------------- Define globals ---------------*/
-char   gError[MAXBUFF];
+char   gError[ERRBUFF];
 GRID   *gGrid   = NULL,
        *gHBGrid = NULL;
 ZONE   *gUserSS = NULL,
@@ -194,7 +196,7 @@ CACHE  *gCache  = NULL;
 int    gConfNum = 0;
 
 #else                   /*------------- Reference globals --------------*/
-extern char   gError[MAXBUFF];
+extern char   gError[ERRBUFF];
 extern GRID   *gGrid,
               *gHBGrid;
 extern ZONE   *gUserSS,

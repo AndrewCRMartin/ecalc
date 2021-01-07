@@ -3,12 +3,12 @@
    Program:    ECalc
    File:       ReadParams.c
    
-   Version:    V1.5
-   Date:       06.02.03
+   Version:    V1.5.1
+   Date:       07.01.21
    Function:   Read a parameters file into global arrays
    
-   Copyright:  (c) Dr. Andrew C. R. Martin 1994-2003
-   Author:     Dr. Andrew C. R. Martin
+   Copyright:  (c) UCL, Prof. Andrew C. R. Martin 1994-2021
+   Author:     Prof. Andrew C. R. Martin
    Address:    Biomolecular Structure & Modelling Unit,
                Department of Biochemistry & Molecular Biology,
                University College,
@@ -47,14 +47,15 @@
 
    Revision History:
    =================
-   V0.1  25.08.94 Original
-   V0.2  22.09.94 Added code to get file from environment variable
-   V1.0  30.09.94 First release version
-   V1.1  11.10.94 Added residue pseudo-energy parameter code
-   V1.2  10.11.94 Bug fixes in energy.c
-   V1.3  28.11.94 Bug fixes in energy.c
-   V1.4  18.05.95 Shake support
-   V1.5  06.02.03 Fixed for new version of GetWord()
+   V0.1   25.08.94 Original
+   V0.2   22.09.94 Added code to get file from environment variable
+   V1.0   30.09.94 First release version
+   V1.1   11.10.94 Added residue pseudo-energy parameter code
+   V1.2   10.11.94 Bug fixes in energy.c
+   V1.3   28.11.94 Bug fixes in energy.c
+   V1.4   18.05.95 Shake support
+   V1.5   06.02.03 Fixed for new version of GetWord()
+   V1.5.1 07.01.21 Removed unused variables
 
 *************************************************************************/
 /* Includes
@@ -544,8 +545,10 @@ static BOOL CalcNBondParams(void)
 {
    int  AtomI,
         AtomJ,
+/*
         KeyI,
         KeyJ,
+*/
         i;
    REAL Numer, Denom,
         a,     b,
@@ -637,9 +640,10 @@ static BOOL CalcNBondParams(void)
          
          a = (REAL)0.5 * b * r6;
 
+/*         
          KeyI = gAtomParams[AtomI].key;
          KeyJ = gAtomParams[AtomJ].key;
-
+*/
          strcpy(gNonBondParams[AtomI][AtomJ].atom1,
                 gAtomParams[AtomI].atom);
          strcpy(gNonBondParams[AtomI][AtomJ].atom2,

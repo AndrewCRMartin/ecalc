@@ -3,12 +3,12 @@
    Program:    ECalc
    File:       PrintParams.c
    
-   Version:    V1.5
+   Version:    V1.5.1
    Date:       06.02.03
    Function:   Print the contents of the parameters arrays
    
-   Copyright:  (c) Dr. Andrew C. R. Martin 1994-2003
-   Author:     Dr. Andrew C. R. Martin
+   Copyright:  (c) UCL, Prof. Andrew C. R. Martin 1994-2021
+   Author:     Prof. Andrew C. R. Martin
    Address:    Biomolecular Structure & Modelling Unit,
                Department of Biochemistry & Molecular Biology,
                University College,
@@ -45,14 +45,15 @@
 
    Revision History:
    =================
-   V0.1  26.08.94 Original
-   V0.2  30.09.94 Added checks on number of parameters
-   V1.0  30.09.94 First release version
-   V1.1           Skipped
-   V1.2           Skipped
-   V1.3  28.11.94 Bug fixes in energy.c
-   V1.4  18.05.95 Shake support
-   V1.5  06.02.03 Skipped
+   V0.1   26.08.94 Original
+   V0.2   30.09.94 Added checks on number of parameters
+   V1.0   30.09.94 First release version
+   V1.1            Skipped
+   V1.2            Skipped
+   V1.3   28.11.94 Bug fixes in energy.c
+   V1.4   18.05.95 Shake support
+   V1.5   06.02.03 Skipped
+   V1.5.1 07.01.21 Skipped
 
 *************************************************************************/
 /* Includes
