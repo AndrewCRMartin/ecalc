@@ -3,8 +3,8 @@
    Program:    ECalc
    File:       main.c
    
-   Version:    V1.5.1
-   Date:       07.01.21
+   Version:    V1.5.2
+   Date:       19.02.21
    Function:   Main program for energy calculation
    
    Copyright:  (c) UCL, Prof. Andrew C. R. Martin 1994-2021
@@ -246,6 +246,10 @@ calculation\n");
          }
       }         
    }
+   else
+   {
+      UsageExit();
+   }
    
    ShowErrors(NULL, Flags.Debug);
    
@@ -404,6 +408,8 @@ the control file as `-'");
    09.09.94 Original    By: ACRM
    13.09.94 Added call to UsageExit()
             Added - flag on its own to indicate control on stdin
+   19.02.21 Now returns FALSE  if no arguments instead of calling 
+            UsageExit()
 */
 BOOL ParseCmdLine(int argc, char **argv, char *PDBFile, char *ControlFile)
 {
@@ -414,7 +420,7 @@ BOOL ParseCmdLine(int argc, char **argv, char *PDBFile, char *ControlFile)
    ControlFile[0] = '\0';
 
    if(!argc)
-      UsageExit();
+      return(FALSE);
   
    while(argc)
    {
@@ -468,10 +474,11 @@ BOOL ParseCmdLine(int argc, char **argv, char *PDBFile, char *ControlFile)
    18.05.95 V1.4
    06.02.03 V1.5
    07.01.21 V1.5.1
+   19.02.21 V1.5.2 Updated file preparation message
 */
 void UsageExit(void)
 {
-   fprintf(stderr,"\nECalc V1.5.1 (c) 1994-2021, Dr. Andrew C.R. Martin, \
+   fprintf(stderr,"\nECalc V1.5.2 (c) 1994-2021, Dr. Andrew C.R. Martin, \
 University College London.\n\n");
 
    fprintf(stderr,"Calculates the energy of a protein structure or of a \
@@ -483,8 +490,8 @@ CHARMM-style NTER\n");
    fprintf(stderr,"and CTER residues. This can be achieved using the \
 following UNIX command:\n\n");
 
-   fprintf(stderr,"   chainpdb xxxx.pdb | pdbhadd -c | pdbcter -c | \
-renumpdb > xxxx.pdh\n\n");
+   fprintf(stderr,"   pdbchain xxxx.pdb | pdbhadd -c | pdbcter -c | \
+pdbrenum > xxxx.pdh\n\n");
 
    fprintf(stderr,"Usage: ecalc [-p (xxxx.pdh | -)] [control.dat | -]\n");
    fprintf(stderr,"              -p specifies the PDB file (with \
