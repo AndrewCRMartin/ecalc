@@ -4,7 +4,7 @@
    File:       main.c
    
    Version:    V1.5.2
-   Date:       19.02.21
+   Date:       05.03.21
    Function:   Main program for energy calculation
    
    Copyright:  (c) UCL, Prof. Andrew C. R. Martin 1994-2021
@@ -54,6 +54,7 @@
    V1.4   18.05.95 Shake support
    V1.5   06.02.03 Bug fixes in ReadStructure.c
    V1.5.1 07.01.21 General tidy up
+   V1.5.2 05.03.21 Bug fixes in energy.c
 
 *************************************************************************/
 #define ECALC_MAIN
@@ -145,7 +146,7 @@ int main(int argc, char **argv)
             *controlfp = NULL,
             *conffp    = NULL,
             *out       = stdout;
-   BOOL     AtomError  = FALSE;
+/*   BOOL     AtomError  = FALSE; */
    EPARAMS  EParams;
    FLAGS    Flags;
    int      NumSS      = 0;
@@ -174,7 +175,7 @@ int main(int argc, char **argv)
                      PrintRTop(out);
                   
                   if((mol = ReadStructure(pdbfp, Flags.AutoDisulphide, 
-                                          &AtomError, &NumSS))!=NULL)
+                                          &gAtomError, &NumSS))!=NULL)
                   {
                      if(Flags.AutoDisulphide)
                         fprintf(out, "%d disulphides were found and \
@@ -185,7 +186,7 @@ disulphides\n");
 
                      FreeRTop();
                      
-                     if(AtomError)
+                     if(gAtomError)
                      {
                         int chain, i, resnum;
                         
@@ -474,7 +475,7 @@ BOOL ParseCmdLine(int argc, char **argv, char *PDBFile, char *ControlFile)
    18.05.95 V1.4
    06.02.03 V1.5
    07.01.21 V1.5.1
-   19.02.21 V1.5.2 Updated file preparation message
+   05.03.21 V1.5.2 Updated file preparation message
 */
 void UsageExit(void)
 {

@@ -3,8 +3,8 @@
    Program:    ECalc
    File:       ecalc.h
    
-   Version:    V1.5.1
-   Date:       07.01.21
+   Version:    V1.5.2
+   Date:       05.03.21
    Function:   General type definitions, defines, macros and globals
    
    Copyright:  (c) UCL, Prof. Andrew C. R. Martin 1994-2021
@@ -53,6 +53,7 @@
    V1.4   18.05.95 Shake & Relax support
    V1.5   06.02.03 Skipped
    V1.5.1 07.01.21 Skipped
+   V1.5.2 05.03.21 Added gAtomError
 
 *************************************************************************/
 #ifndef _ECALC_H
@@ -187,13 +188,14 @@ typedef struct
 */
 #ifdef ECALC_MAIN       /*--------------- Define globals ---------------*/
 char   gError[ERRBUFF];
-GRID   *gGrid   = NULL,
-       *gHBGrid = NULL;
-ZONE   *gUserSS = NULL,
-       *gZone   = NULL,
-       *gIgnore = NULL;
-CACHE  *gCache  = NULL;
-int    gConfNum = 0;
+GRID   *gGrid     = NULL,
+       *gHBGrid   = NULL;
+ZONE   *gUserSS   = NULL,
+       *gZone     = NULL,
+       *gIgnore   = NULL;
+CACHE  *gCache    = NULL;
+int    gConfNum   = 0;
+BOOL   gAtomError = FALSE;
 
 #else                   /*------------- Reference globals --------------*/
 extern char   gError[ERRBUFF];
@@ -204,6 +206,7 @@ extern ZONE   *gUserSS,
               *gIgnore;
 extern CACHE  *gCache;
 extern int    gConfNum;
+extern BOOL   gAtomError;
 
 #endif                  /*----------------- End globals ----------------*/
 

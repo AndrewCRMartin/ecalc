@@ -3,8 +3,8 @@
    Program:    ECalc
    File:       topology.h
    
-   Version:    V1.5.1
-   Date:       07.01.21
+   Version:    V1.5.2
+   Date:       05.03.21
    Function:   Define topology structure types, etc.
    
    Copyright:  (c) UCL, Prof. Andrew C. R. Martin 1994-2021
@@ -54,6 +54,7 @@
                    Also added Mobile flag
    V1.5   06.02.03 Skipped
    V1.5.1 07.01.21 Skipped
+   V1.5.2 05.03.21 Skipped
 
 *************************************************************************/
 #ifndef _TOPOLOGY_H

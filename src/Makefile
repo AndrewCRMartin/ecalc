@@ -4,7 +4,7 @@ LIBFLAGS = -L$(HOME)/lib
 
 # Change these for your compiler and linker
 CC      = cc $(INCFLAGS) -c -g -ansi -pedantic -Wall
-LINK    = cc $(LIBFLAGS) -o $(EXEFILE) -g
+LINK    = cc $(LIBFLAGS) -o $(EXEFILE) -g 
 
 # Change this to specify the required libraries
 LIBRARIES = -lbiop -lgen -lm -lxml2

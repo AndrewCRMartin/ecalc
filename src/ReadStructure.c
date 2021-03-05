@@ -3,8 +3,8 @@
    Program:    ECalc
    File:       ReadStructure.c
    
-   Version:    V1.5.1
-   Date:       06.02.03
+   Version:    V1.5.2
+   Date:       05.03.21
    Function:   Read sequence & coordinates into the topology structure
    
    Copyright:  (c) UCL, Prof. Andrew C. R. Martin 1994-2021
@@ -54,6 +54,7 @@
    V1.5   06.02.03 Allow GLU/PCA to match
                    Added code to remove PRO/HT3
    V1.5.1 07.01.21 Skipped
+   V1.5.2 05.03.21 Skipped
 
 *************************************************************************/
 /* Includes

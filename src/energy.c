@@ -4,8 +4,8 @@
    Program:    ECalc
    File:       energy.c
    
-   Version:    V1.5.1
-   Date:       07.01.21
+   Version:    V1.5.2
+   Date:       05.03.21
    Function:   Calculate the energy of the structure
    
    Copyright:  (c) UCL, Prof. Andrew C. R. Martin 1994-2021
@@ -59,6 +59,7 @@
    V1.5   06.02.03 Fixed for new version of GetWord()
                    Ignore Nter proline-CD/HT1 or HT2 in grid
    V1.5.1 07.01.21 Removed unused variables
+   V1.5.2 05.03.21 Variable initializations to deal with missing atoms
 
 *************************************************************************/
 /* Includes
@@ -422,6 +423,7 @@ too far from mimimum (Chain %c Atoms %d %d %d %d)",
    15.09.94 Checks that neighbours have been allocated before freeing
    07.02.03 Added code to check for Nter Pro - if so don't include
             HT1/CD or HT2/CD in the grid
+   05.03.21 Added initializations
 */
 GRID *BuildGrid(MOLECULE *mol, REAL GridCut)
 {
@@ -437,7 +439,7 @@ GRID *BuildGrid(MOLECULE *mol, REAL GridCut)
    {
       for(AtomNum=0; AtomNum<mol->NAtoms; AtomNum++)
       {
-         if(gGrid[AtomNum].NeighbMax) 
+         if(gGrid[AtomNum].NeighbMax)
             free(gGrid[AtomNum].neighbours);
       }
       free(gGrid);
@@ -448,8 +450,12 @@ GRID *BuildGrid(MOLECULE *mol, REAL GridCut)
       return(NULL);
    for(i=0; i<mol->NAtoms; i++)
    {
-      gGrid[i].NNeighb   = 0;
-      gGrid[i].NeighbMax = 0;
+      gGrid[i].NNeighb    = 0;
+      gGrid[i].NeighbMax  = 0;
+      /* 05.03.21 Added these intializations                            */
+      gGrid[i].atom       = NULL;
+      gGrid[i].antecedant = NULL;
+      gGrid[i].neighbours = NULL;
    }
    
    AtomNum = 0;
@@ -728,7 +734,7 @@ REAL ENonBond(MOLECULE *mol, EPARAMS *eparams,
    for(i=0; i<mol->NAtoms; i++)
    {
       atom1 = gGrid[i].atom;
-      if(VALID(atom1))
+      if(VALID(atom1)) 
       {
          for(j=0; j<gGrid[i].NNeighb; j++)
          {
@@ -980,6 +986,7 @@ REAL EHBond(MOLECULE *mol, EPARAMS *eparams)
    05.09.94 Original    By: ACRM
    13.09.94 Added check on valid coordinates
    15.09.94 Checks that neighbours have been allocated before freeing
+   05.03.21 Added initializations for missing atoms
 */
 GRID *BuildHBGrid(MOLECULE *mol, REAL GridCut)
 {
@@ -1007,8 +1014,12 @@ GRID *BuildHBGrid(MOLECULE *mol, REAL GridCut)
       return(NULL);
    for(i=0; i<mol->NDonors; i++)
    {
-      gHBGrid[i].NNeighb   = 0;
-      gHBGrid[i].NeighbMax = 0;
+      gHBGrid[i].NNeighb    = 0;
+      gHBGrid[i].NeighbMax  = 0;
+      /* 05.03.21 Added these intializations                            */
+      gHBGrid[i].atom       = NULL;
+      gHBGrid[i].antecedant = NULL;
+      gHBGrid[i].neighbours = NULL;
    }
    
    AtomNum = 0;
@@ -1131,7 +1142,8 @@ grid");
    /* Calculate the base structure energy                               */
    energy = ShowEnergy(out, mol, &EParams, &Flags);
 
-   fprintf(out,"Base structure energy = %f\n",energy);
+   fprintf(out,"Base structure energy = %f%s\n",energy,
+           gAtomError?" (MISSING ATOMS)":"");
 
    /* For each conformation                                             */
    while(GetConf(conffp, mol, TRUE))

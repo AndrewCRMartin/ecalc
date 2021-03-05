@@ -3,8 +3,8 @@
    Program:    ECalc
    File:       ReadParams.c
    
-   Version:    V1.5.1
-   Date:       07.01.21
+   Version:    V1.5.2
+   Date:       05.03.21
    Function:   Read a parameters file into global arrays
    
    Copyright:  (c) UCL, Prof. Andrew C. R. Martin 1994-2021
@@ -56,6 +56,7 @@
    V1.4   18.05.95 Shake support
    V1.5   06.02.03 Fixed for new version of GetWord()
    V1.5.1 07.01.21 Removed unused variables
+   V1.5.2 05.03.21 Skipped
 
 *************************************************************************/
 /* Includes
