@@ -3,8 +3,8 @@ INCFLAGS = -I$(HOME)/include
 LIBFLAGS = -L$(HOME)/lib
 
 # Change these for your compiler and linker
-CC      = cc $(INCFLAGS) -c -g -ansi -pedantic -Wall
-LINK    = cc $(LIBFLAGS) -o $(EXEFILE) -g 
+CC      = cc $(INCFLAGS) -c -O3 -ansi -pedantic -Wall
+LINK    = cc $(LIBFLAGS) -o $(EXEFILE) -O3
 
 # Change this to specify the required libraries
 LIBRARIES = -lbiop -lgen -lm -lxml2

@@ -48,7 +48,7 @@
    V1.4   18.05.95 Original
    V1.5   06.02.03 Skipped
    V1.5.1 07.01.21 Removed unused variables
-   V1.5.2 05.03.21 Skipped
+   V1.5.2 05.03.21 Variable initialization
 
 *************************************************************************/
 /* Includes
@@ -87,6 +87,7 @@
 
    18.05.95 Original    By: ACRM
    19.05.95 Errors reported through StoreError()
+   05.03.21 Initialize OptLenSq
 */
 int ShakeChain(TOPOLOGY *topol, REAL Tolerence)
 {
@@ -97,7 +98,7 @@ int ShakeChain(TOPOLOGY *topol, REAL Tolerence)
    int   NIter,
          i;
    REAL  Tol2,
-         OptLenSq,
+         OptLenSq = 0.0,
          Diff,
          DistIJSq,
          DotProduct,

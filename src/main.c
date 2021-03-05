@@ -54,7 +54,7 @@
    V1.4   18.05.95 Shake support
    V1.5   06.02.03 Bug fixes in ReadStructure.c
    V1.5.1 07.01.21 General tidy up
-   V1.5.2 05.03.21 Bug fixes in energy.c
+   V1.5.2 05.03.21 Bug fixes in energy.c, shake.c and StoreZone()
 
 *************************************************************************/
 #define ECALC_MAIN
@@ -942,6 +942,7 @@ file", StrParam[0]);
    21.09.94 Added zone as parameter rather than global. 
             Corrected error messages
             Returns a pointer to the latest zone rather than BOOL
+   05.03.21 Fixed strncpy length
 */
 ZONE *StoreZone(ZONE **zone, char *resspec1, char *resspec2)
 {
@@ -991,9 +992,10 @@ ZONE *StoreZone(ZONE **zone, char *resspec1, char *resspec2)
                  "No memory to store zone data");
       return(NULL);
    }
-   
-   strncpy(p->res1, resspec1, 16);
-   strncpy(p->res2, resspec2, 16);
+
+   /* 05.03.21 Fixed from 16                                            */
+   strncpy(p->res1, resspec1, 15);
+   strncpy(p->res2, resspec2, 15);
 
    p->res1[15] = '\0';
    p->res2[15] = '\0';
