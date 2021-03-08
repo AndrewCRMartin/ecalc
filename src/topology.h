@@ -70,7 +70,7 @@
 /* Defines and macros
 */
 #define MAXEXCL  6
-#define MAXCHAIN 6
+#define MAXCHAIN 80
 
 /************************************************************************/
 /* Structure definitions
